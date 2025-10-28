@@ -54,6 +54,8 @@ public class pokemonbattle {
         boolean turnoCharmander = true;
 
         while (vidaCharmander > 0 && vidaBulbasaur > 0) {
+            estado(Pokemon1,vidaCharmander, MpCharmander,ataqueCharmander,dañoEspCharmander,defCharmander);
+            estado(Pokemon2,vidaBulbasaur, MpBulbasaur,ataqueBulbasaur,dañoEspBulbasaur,defBulbasaur);
             //enpieza el turno de charmander// cambiamos al final del bucle//
             if (turnoCharmander) {
                 //Charmander
