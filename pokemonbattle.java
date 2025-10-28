@@ -7,49 +7,67 @@ import java.util.Scanner;
 public class pokemonbattle {
     public static void estado(String nombre, int vida,int mp, int ataque,int danhoAtaqueSpe,int defensa){
        System.out.println("Datos del pokemon" + nombre);
-       System.out.println(nombre + " tiene" + vida + "puntos de vida");
-       System.out.println(nombre + " tiene" + ataque  + "puntos de ataque");
-       System.out.println(nombre + " tiene" + danhoAtaqueSpe + "puntos de ataque especial");
-       System.out.println(nombre + " tiene" + defensa  + "puntos de defensa");
-       System.out.println(nombre + " tiene" + mp + "puntos de poder mágico");
-
-
-
-
-
-
-
-
+       System.out.println(nombre + " tiene " + vida + " puntos de vida");
+       System.out.println(nombre + " tiene " + ataque  + " puntos de ataque");
+       System.out.println(nombre + " tiene " + danhoAtaqueSpe + " puntos de ataque especial");
+       System.out.println(nombre + " tiene " + defensa  + " puntos de defensa");
+       System.out.println(nombre + " tiene " + mp + " puntos de poder mágico");
     }
+    public static void PedeirAtaque(String nombre,String ataque1,String ataque2){
+       System.out.println(" Que ataque debe realizar " + nombre);
+       System.out.println(ataque1);
+       System.out.println(ataque2);
+       Scanner entrada = new Scanner(System.in);
+
+       //relaizar aatque le pasas a la funcion de ataque
+    }
+
+    public static void realizaratque(String nombre,int ataque1,int ataque2){
+        System.out.println(nombre + " ataca, le quita" + ataque1 + " de daño");
+        System.out.println(nombre + " ataca, le quita" + ataque2 + " de daño");
+    }
+
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
 
         //Charmander//
-        String Pokemon1 = "Charmander";
+        String Pokemon1 = " Charmander";
         int vidaCharmander = 54;
         int MpCharmander = 15;
         int ataqueCharmander = 12;
         int defCharmander = 7;
-        String ataqueNormalCharmander = "Golpe";
-        String ataqueEspCharmander = "Ascuas";
+        String ataqueNormalCharmander = " Golpe";
+        String ataqueEspCharmander = " Ascuas";
         int dañoEspCharmander = 19;
         int MpAtaquespecialCharmander = 10;
 
         //Bulbasaur//
-        String Pokemon2 = "Bulbasaur";
+        String Pokemon2 = " Bulbasaur";
         int vidaBulbasaur = 54;
         int MpBulbasaur = 24;
         int ataqueBulbasaur = 15;
         int defBulbasaur = 6;
-        String ataqueNormalBulbasaur = "Látigo cepa";
-        String ataqueEspBulbasaur = "Hoja afilada";
+        String ataqueNormalBulbasaur = " Látigo cepa";
+        String ataqueEspBulbasaur = " Hoja afilada";
         int dañoEspBulbasaur = 17;
         int MpAtaquespecialBulbasaur = 8;
 
-        System.out.println("¡Batalla Pokémon entre " + Pokemon1 + " VS " + Pokemon2 + "!");
+        System.out.println(" ¡Batalla Pokémon entre " + Pokemon1 + " VS " + Pokemon2 + "!");
+        //funcion estado//
         //String nombre, int vida,int mp, int ataque,int danhoAtaqueSpe,int defensa)
         estado(Pokemon1,vidaCharmander, MpCharmander,ataqueCharmander,dañoEspCharmander,defCharmander);
         estado(Pokemon2,vidaBulbasaur, MpBulbasaur,ataqueBulbasaur,dañoEspBulbasaur,defBulbasaur);
+
+            /// //////////////////////////////////////////////////////////////////////////////////
+        //funcion pedir ataque//
+        PedeirAtaque(Pokemon1,ataqueNormalBulbasaur,ataqueEspBulbasaur);
+        PedeirAtaque(Pokemon2,ataqueNormalCharmander,ataqueEspCharmander);
+        /// //////////////////////////////////////////////////////////////////////
+        //funcion realizar ataque
+        realizaratque(Pokemon1,ataqueCharmander,dañoEspCharmander);
+        realizaratque(Pokemon2,ataqueBulbasaur,dañoEspBulbasaur);
+
+
 
         boolean turnoCharmander = true;
 
@@ -59,20 +77,20 @@ public class pokemonbattle {
             //enpieza el turno de charmander// cambiamos al final del bucle//
             if (turnoCharmander) {
                 //Charmander
-                System.out.println("\nEs el turno de " + Pokemon1);
-                System.out.println("1. Ataque normal (" + ataqueNormalCharmander + ") → " + ataqueCharmander + " daño");
-                System.out.println("2. Ataque especial (" + ataqueEspCharmander + ") → " + dañoEspCharmander + " daño, cuesta " + MpAtaquespecialCharmander + " MP");
-                System.out.println("MP actual: " + MpCharmander);
+                System.out.println("Es el turno de " + Pokemon1);
+                System.out.println(" 1." + ataqueNormalCharmander + " - " + ataqueCharmander + " daño");
+                System.out.println(" 2." + ataqueEspCharmander    + " - " + dañoEspCharmander + " daño, cuesta " + MpAtaquespecialCharmander + " MP");
+                System.out.println("Le quedan " + MpCharmander + "MP");
                 int eleccion = entrada.nextInt();
                 //si elejimos 1, atacara normal, elejimos 2 atacara con ataque especial si tiene//
                 if (eleccion == 1) {
-                    int daño = Math.max(ataqueCharmander - defBulbasaur, 0);
+                    int daño =(ataqueCharmander - defBulbasaur);
                     vidaBulbasaur -= daño;
                     System.out.println(Pokemon1 + " usa " + ataqueNormalCharmander + " e inflige " + daño + " puntos de daño.");
                 } else if (eleccion == 2) {
                     if (MpCharmander >= MpAtaquespecialCharmander) {
                         MpCharmander -= MpAtaquespecialCharmander;
-                        int daño = Math.max(dañoEspCharmander - defBulbasaur, 0);
+                        int daño = dañoEspCharmander - defBulbasaur;
                         vidaBulbasaur -= daño;
                         System.out.println(Pokemon1 + " usa " + ataqueEspCharmander + " e inflige " + daño + " puntos de daño.");
                     } else {
@@ -87,15 +105,15 @@ public class pokemonbattle {
             } else
             {
                 //bulbasaur//
-                System.out.println("\nEs el turno de " + Pokemon2);
-                System.out.println("1. Ataque normal (" + ataqueNormalBulbasaur + ") → " + ataqueBulbasaur + " daño");
-                System.out.println("2. Ataque especial (" + ataqueEspBulbasaur + ") → " + dañoEspBulbasaur + " daño, cuesta " + MpAtaquespecialBulbasaur + " MP");
+                System.out.println("Es el turno de " + Pokemon2);
+                System.out.println("1." + ataqueNormalBulbasaur + "-" + ataqueBulbasaur + " daño");
+                System.out.println("2." + ataqueEspBulbasaur + "-" + dañoEspBulbasaur + " daño, cuesta " + MpAtaquespecialBulbasaur + " MP");
                 System.out.println("MP actual: " + MpBulbasaur);
                 int eleccion = entrada.nextInt();
 
                 if (eleccion == 1)
                 {
-                    int daño = Math.max(ataqueBulbasaur - defCharmander, 0);
+                    int daño =(ataqueBulbasaur - defCharmander);
                     vidaCharmander -= daño;
                     System.out.println(Pokemon2 + " usa " + ataqueNormalBulbasaur + " e inflige " + daño + " puntos de daño.");
                 } else if (eleccion == 2)
